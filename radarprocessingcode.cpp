@@ -4,6 +4,10 @@ const int echoPin = 9;
 long duration;
 int distance;
 Servo myServo;
+Servo myservo1;
+Servo myservo2;
+#define POT A0
+#define BTN 0
 void setup() {
   pinMode(trigPin, OUTPUT); 
   pinMode(echoPin, INPUT); 
@@ -12,6 +16,10 @@ void setup() {
   pinMode(10, OUTPUT); 
   pinMode(12, OUTPUT);
   pinMode(13, OUTPUT);
+  pinMode(POT,INPUT);
+  pinMode(BTN,INPUT_PULLUP);
+  myservo1.attach(A1);
+  myservo2.attach(A2);
 }
 void loop() {
   for (int i = 15; i <= 165; i++) {  
@@ -50,6 +58,19 @@ void loop() {
       digitalWrite(10, HIGH);
     }
   }
+  int ba=analogRead(POT);
+  int missile=map(ba,0,1023,0,180);
+  myservo1.write(missile);
+  int launch=digitalRead(BTN);
+  if(launch==LOW)
+  {
+    myservo2.write(90);
+  }
+  else
+  {
+    myservo2.write(0);
+  }
+  delay(500);
 }
 int calculateDistance() { 
   digitalWrite(trigPin, LOW);
