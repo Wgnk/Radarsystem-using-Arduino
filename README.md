@@ -16,6 +16,7 @@ Components used:-
 11) OLED display(2 pics)
 12) USB cable(1 pics)
 13) Cardboard(small)
+
 Added extra in existing project:-
 1) Potentiometer
 2) Pushbutton
