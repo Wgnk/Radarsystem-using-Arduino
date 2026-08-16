@@ -4,8 +4,12 @@
  #include <Adafruit_GFX.h>
  #include <Adafruit_SSD1306.h>
  #include <Servo.h>
+#define BTN 0
  #define Trig 8
  #define Echo 9
+#define POT A0
+Servo myservo1;
+Servo myservo2;
  Adafruit_SSD1306 display(-1);
  Servo Servo1;
  LiquidCrystal lcd(7,6,5,4,3,2);
@@ -21,6 +25,10 @@
    display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
    pinMode(Trig, OUTPUT);
    pinMode(Echo, INPUT);
+  pinMode(POT,INPUT);
+  pinMode(BTN,INPUT_PULLUP);
+  myservo1.write(A1);
+  myservo2.write(A2);
    Serial.begin(9600);
    Servo1.attach(11);
    delay(1000);
@@ -313,6 +321,19 @@ digitalWrite(12,HIGH);
 digitalWrite(10,HIGH);  
  }
  }
+  int ba=analogRead(POT);
+  int missile=map(ba,0,1023,0,180);
+  myservo1.write(missile);
+  int launch=digitalRead(BTN);
+  if(launch==LOW)
+  {
+   myservo2.write(90);
+  }
+  else
+  {
+   myservo2.write(0);
+  }
+  delay(500);
  }
  int Distance_value()
  {
