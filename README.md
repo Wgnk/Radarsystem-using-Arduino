@@ -254,3 +254,4 @@ Recording object detection and environmental measurements.
 ->> Improved Detection Algorithms: More stable and reliable distance measurements.
 ->> 360° Scanning :
 Expanded environmental coverage using suitable mechanical arrangements.
+<img width="120" height="160" alt="image" src="https://github.com/user-attachments/assets/4fb1c4a3-62d9-417c-ba66-0d5980c219c6" />
